@@ -2,11 +2,11 @@ import axios from "axios";
 
 
 export const saveBook = bookData => {
-  return axios.post("api/books", bookData);
+  return axios.post("/api/books", bookData);
 }
 
 export const getSavedBooks = () => {
-  return axios.get("api/books");
+  return axios.get("/api/books");
 }
 
 export const removeBook = bookId => {

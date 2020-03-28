@@ -51,7 +51,7 @@ class Saved extends Component {
                                             {`By: ${book.authors.length ? book.authors.join(',') : null}`}
                                         </small>
                                         <p>{book.description}</p>
-                                        <button onClick={() => this.handleGetSavedBooks(book._id)} className="btn btn-danger btn-small">Remove Book</button>
+                                        <button onClick={() => this.handleRemoveBook(book._id)} className="btn btn-danger btn-small">Remove Book</button>
                                     </Card>
                                 </Column>
                             );
