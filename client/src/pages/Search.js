@@ -10,7 +10,7 @@ class Search extends Component {
     state = {
         searchTerm: "",
         bookList: [],
-        savedBooksIds: [],
+        savedBookIds: [],
         error: null
     }
 
@@ -41,16 +41,17 @@ class Search extends Component {
                     image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "",
                 };
             });
+            console.log(bookListCleaned); // this works
 
             return this.setState({ bookList: bookListCleaned, searchTerm: ""});
-        }).then(this.retrieveSavedBooks).catch(err => this.setState({error: err}));
+        }).then(this.retrieveSavedBooks);
     };
 
     retrieveSavedBooks = () => {
         getSavedBooks().then(res => {
-            const savedBookId = res.data.map(({bookId}) => bookId); // equivalent to book => book.bookId
-            this.setState({ savedBookId });
-        }).catch(err => this.setState({ error: err}));
+            const savedBookIds = res.data.map(book => book.bookId);
+            this.setState({ savedBookIds });
+        });
     };
 
     handleBookSaveBook = bookId => {
@@ -58,7 +59,7 @@ class Search extends Component {
         saveBook(book).then(() => {
             const savedBookIds = [...this.state.savedBookIds, bookId];
             this.setState({ savedBookIds });
-        }).catch(err => this.setState({ error: err}));
+        });
     };
 
     render() {
