@@ -52,6 +52,9 @@ class Saved extends Component {
                                         </small>
                                         <p>{book.description}</p>
                                         <button onClick={() => this.handleRemoveBook(book._id)} className="btn btn-danger btn-small">Remove Book</button>
+                                        <button className={"btn btn-sucess btn-small ml-2"}>
+                                            <a href={book.link} target="#">View Book</a>
+                                        </button>
                                     </Card>
                                 </Column>
                             );

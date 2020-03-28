@@ -29,6 +29,7 @@ class Search extends Component {
         
 
         searchGoogleBooks(this.state.searchTerm).then(res => {
+            console.log(res);
             const {items} = res.data;
             this.setState({error: null});
 
@@ -39,9 +40,10 @@ class Search extends Component {
                     authors: book.volumeInfo.authors,
                     description: book.volumeInfo.description,
                     image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "",
+                    link: book.volumeInfo.infoLink
                 };
             });
-            console.log(bookListCleaned); // this works
+            console.log(bookListCleaned);
 
             return this.setState({ bookList: bookListCleaned, searchTerm: ""});
         }).then(this.retrieveSavedBooks);
@@ -113,6 +115,11 @@ class Search extends Component {
                                                 onClick={() => this.handleBookSaveBook(book.bookId)}
                                                 >
                                                     Save Book
+                                                </button>
+                                                <button
+                                                className={"btn btn-sucess btn-small ml-2"}   
+                                                >
+                                                    <a href={book.link} target="#">View Book</a>
                                                 </button>
                                             </Card>
                                         </Column>
