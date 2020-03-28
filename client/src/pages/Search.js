@@ -48,7 +48,7 @@ class Search extends Component {
 
     retrieveSavedBooks = () => {
         getSavedBooks().then(res => {
-            const savedBookIds = res.data.map(({bookId}) => bookId); // equivalent to book => book.bookId
+            const savedBookId = res.data.map(({bookId}) => bookId); // equivalent to book => book.bookId
             this.setState({ savedBookId });
         }).catch(err => this.setState({ error: err}));
     };
@@ -101,7 +101,7 @@ class Search extends Component {
                                             image={book.image ? book.image : undefined}
                                             >
                                                 <small className="text-muted">
-                                                    {`By: ${book.authors.length ? book.author.join(',') : null}`}
+                                                    {`By: ${book.authors.length ? book.authors.join(',') : null}`}
                                                 </small>
                                                 <p>{book.description}</p>
                                                 <button
