@@ -48,7 +48,7 @@ class Saved extends Component {
                                     image={book.image ? book.image : undefined}
                                     >
                                         <small className="text-muted">
-                                            {`By: ${book.authors.length ? book.authors.join(',') : null}`}
+                                            {`By: ${book.authors.length ? book.authors.join(',') : "No Author Listed"}`}
                                         </small>
                                         <p>{book.description}</p>
                                         <button onClick={() => this.handleRemoveBook(book._id)} className="btn btn-danger btn-small">Remove Book</button>
